@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Calculator</title>
+    <link rel="stylesheet" href="calculator.css">
+</head>
+<body>
+     <div class="header">
+        <button class="home_but"><a class="head" href="http://127.0.0.1:5500/Calculator/Calculator1.html">Home</a></button>
+        <button class="basic_but"><a class="head" href="http://127.0.0.1:5500/Calculator/calculator2.html">Basic Calculator</a></button>
+        <button class="sci_but"> <a class="head" href="http://127.0.0.1:5500/Calculator/calculator3.html">Scientific Calculator</a></button>
+    </div>
+    <h1 class="title">SCIENTIFIC CALCULATOR</h1>
+    <div class="BOX3">
+        <table cellspacing="3" class="table2">
+            <tr>
+                <td colspan="4"><input id="display" type="text" class="display"></td>
+                <td><input class="seperate1" type="button" value="⌦" onclick="backspace()"></td>
+            </tr>
+            <tr>
+                <td><input class="seperate" type="button" value="C" onclick="clearDisplay()"></td>
+                <td><input class="seperate2" type="button" value="1" onclick="appendValue('1')"></td>
+                <td><input class="seperate2" type="button" value="2" onclick="appendValue('2')"></td>
+                <td><input class="seperate2" type="button" value="3" onclick="appendValue('3')"></td>
+                <td><input class="seperate" type="button" value="cos" onclick=" appendTrigFunc('cos')"></td>
+            </tr>
+            <tr>
+                <td><input class="seperate" type="button" value="π" onclick="appendValue('π')"></td>
+                <td><input class="seperate2" type="button" value="4" onclick="appendValue('4')"></td>
+                <td><input class="seperate2" type="button" value="5" onclick="appendValue('5')"></td>
+                <td><input class="seperate2" type="button" value="6" onclick="appendValue('6')"></td>
+                <td><input class="seperate" type="button" value="log" onclick="calculateLog()"></td>
+            </tr>
+            <tr>
+                <td><input class="seperate" type="button" value="1/x" onclick="calculateReciprocal()"></td>
+                <td><input class="seperate2" type="button" value="7" onclick="appendValue('7')"></td>
+                <td><input class="seperate2" type="button" value="8" onclick="appendValue('8')"></td>
+                <td><input class="seperate2" type="button" value="9" onclick="appendValue('9')"></td>
+                <td><input class="seperate" type="button" value="√" onclick="appendValue('√')"></td>
+            </tr>
+            <tr>
+                <td><input class="seperate" type="button" value="ln" onclick="calculateLn()"></td>
+                <td><input class="seperate2" type="button" value="0" onclick="appendValue('0')"></td>
+                <td><input class="seperate2" type="button" value="(" onclick="appendValue('(')"></td>
+                <td><input class="seperate2" type="button" value=")" onclick="appendValue(')')"></td>
+                <td><input class="seperate" type="button" value="x^y" onclick="appendValue('^')"></td>
+            </tr>
+            <tr>
+                <td><input class="seperate" type="button" value="/" onclick="appendValue('/')"></td>
+                <td><input class="seperate" type="button" value="+" onclick="appendValue('+')"></td>
+                <td><input class="seperate" type="button" value="-" onclick="appendValue('-')"></td>
+                <td><input class="seperate" type="button" value="*" onclick="appendValue('*')"></td>
+                <td><input class="seperate" type="button" value="." onclick="appendValue('.')"></td>
+            </tr>
+            <tr>
+                <td><input class="seperate" type="button" value="e" onclick="appendValue('e')"></td>
+                <td><input class="seperate" type="button" value="x!" onclick="appendValue('!')"></td>
+                <td><input class="seperate" type="button" value="Sin" onclick=" appendTrigFunc('sin')"></td>
+                <td><input class="seperate" type="button" value="tan" onclick=" appendTrigFunc('tan')"></td>
+                <td><input class="seperate1" type="button" value="=" onclick="calculateResult()"></td>
+            </tr>
+        </table>
+    </div>
+
+<script>
+    function clearDisplay() {
+        document.getElementById('display').value = '';
+    }
+    
+    
+    function appendValue(value) {
+        let display = document.getElementById('display');
+        if (value === 'Math.PI')
+        {
+            display.value += π;  
+        } 
+        else if (value === 'Math.E') 
+        {
+            display.value += e;  
+        } 
+        else if (value ==="math.sqrt")
+        {
+            display.value += '√'
+        }
+        else {
+            display.value += value;
+        }
+    }
+
+    function backspace() {
+        let display = document.getElementById('display');
+        display.value = display.value.slice(0, -1);
+    }
+    
+    function appendTrigFunc(func) {
+        let display = document.getElementById('display');
+        display.value += func + '('; 
+    }
+
+    function calculateReciprocal() {
+        let display = document.getElementById('display');
+        let value = eval(display.value);
+        if (value !== 0) {
+            display.value = 1 / value;
+        } 
+        else {
+            display.value = 'Error';
+        }
+    }
+
+    function calculateLn() {
+        let display = document.getElementById('display');
+        let value = eval(display.value);
+        if (value > 0) {
+            display.value = Math.log(value);
+        } else {
+            display.value = 'Error';
+        }
+    }
+
+    function calculateLog() {
+        let display = document.getElementById('display');
+        let value = eval(display.value);
+        if (value > 0) {
+            display.value = Math.log10(value);
+        } else {
+            display.value = 'Error';
+        }
+    }
+
+    function factorial(n) {
+        if (n === 0 || n === 1) return 1;
+        let result = 1;
+        for (let i = 2; i <= n; i++) {
+            result *= i;
+        }
+        return result;
+    }
+    
+    function calculateResult() {
+        let display = document.getElementById('display');
+        let expression = display.value;
+        
+    expression = expression.replace(/([a-zA-Z]+)\(([^)]+)\)/g, function(match, func, angle) {
+    let evaluatedAngle = eval(angle); 
+    let radians = evaluatedAngle * Math.PI / 180; 
+    return Math[func](radians).toFixed(2); 
+
+        });
+
+        expression = expression.replace(/(\d+)!/g, function(match,num)  {
+            return factorial(parseInt(num));
+        });
+        
+        expression = expression.replace(/\^/g, '**');
+
+        expression = expression.replace(/√(\d+|\([^)]*\))/g, function(match, group) {
+        return `Math.sqrt(${group})`;
+        });
+        
+        expression = expression.replace(/π/g, 'Math.PI');
+        expression = expression.replace(/e/g, 'Math.E');
+        
+        try {
+            
+            display.value = eval(expression); 
+        } catch (e) {
+            display.value = 'Error'; 
+        }
+    }
+</script>
+
+</body>
+</html>

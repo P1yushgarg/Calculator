@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculator</title>
+    <link rel="stylesheet" type="text/css" href="calculator.css">
+</head>
+<body>
+    <div class="header">
+        <button class="home_but"><a class="head" href="http://127.0.0.1:5500/Calculator/Calculator1.html">Home</a></button>
+        <button class="basic_but"><a class="head" href="http://127.0.0.1:5500/Calculator/calculator2.html">Basic Calculator</a></button>
+        <button class="sci_but"> <a class="head" href="http://127.0.0.1:5500/Calculator/calculator3.html">Scientific Calculator</a></button>
+    </div>
+    <h1>BASIC CALCULATOR</h1>
+
+    <div class="BOX2">
+        
+        <table cellspacing="5" cellpadding="1">
+            <tr>
+                <td colspan="3"><input id="display" type="text" class="display" ></td>
+                <td><input class="seperate1" type="button" value="⌦" onclick="backspace()"></td>
+            </tr>  
+            <tr>
+                <td><input class="seperate2" type="button" value="7" onclick="appendValue('7')"></td>
+                <td><input class="seperate2" type="button" value="8" onclick="appendValue('8')"></td>
+                <td><input class="seperate2" type="button" value="9" onclick="appendValue('9')"></td>
+                <td><input class="seperate" type="button" value="*" onclick="appendValue('*')"></td>
+            </tr>
+            <tr>
+                <td><input class="seperate2" type="button" value="4" onclick="appendValue('4')"></td>
+                <td><input class="seperate2" type="button" value="5" onclick="appendValue('5')"></td>
+                <td><input class="seperate2" type="button" value="6" onclick="appendValue('6')"></td>
+                <td><input class="seperate" type="button" value="/" onclick="appendValue('/')"></td>
+            </tr>
+            <tr>
+                <td><input class="seperate2" type="button" value="1" onclick="appendValue('1')"></td>
+                <td><input class="seperate2" type="button" value="2" onclick="appendValue('2')"></td>
+                <td><input class="seperate2" type="button" value="3" onclick="appendValue('3')"></td>
+                <td><input class="seperate" type="button" value="+" onclick="appendValue('+')"></td>
+            </tr>
+            <tr>
+                <td><input class="seperate2" type="button" value="0" onclick="appendValue('0')"></td>
+                <td><input class="seperate2" type="button" value="(" onclick="appendValue('(')"></td>
+                <td><input class="seperate2" type="button" value=")" onclick="appendValue(')')"></td>
+                <td><input class="seperate" type="button" value="-" onclick="appendValue('-')"></td>
+            </tr>
+            <tr>
+                <td><input class="seperate1" type="button" value="=" onclick="display.value= eval (display.value)"></td>
+                <td><input class="seperate" type="button" value="%" onclick="appendValue('%')"></td>
+                <td><input class="seperate" type="button" value="." onclick="appendValue('.')"></td>
+                <td><input class="seperate" type="button" value="C" onclick='clearDisplay()'></td>
+            </tr>
+        </table>
+    
+       
+    </div>
+    <script>
+    function clearDisplay() {
+        document.getElementById('display').value = '';
+    }
+    function appendValue(value){
+        document.getElementById('display').value+=value;
+    }
+    function backspace() {
+            let display = document.getElementById('display');
+            display.value = display.value.slice(0, -1);
+        }
+</script>
+</body>
+</html>

@@ -8,9 +8,9 @@
 </head>
 <body>
     <div class="header">
-        <button class="home_but"><a class="head" href="http://127.0.0.1:5500/Calculator/Calculator1.html">Home</a></button>
-        <button class="basic_but"><a class="head" href="http://127.0.0.1:5500/Calculator/calculator2.html">Basic Calculator</a></button>
-        <button class="sci_but"> <a class="head" href="http://127.0.0.1:5500/Calculator/calculator3.html">Scientific Calculator</a></button>
+        <button class="home_but"><a class="head" href="Calculator1.html">Home</a></button>
+        <button class="basic_but"><a class="head" href="calculator2.html">Basic Calculator</a></button>
+        <button class="sci_but"> <a class="head" href="calculator3.html">Scientific Calculator</a></button>
     </div>
     <h1>BASIC CALCULATOR</h1>
 
@@ -25,25 +25,25 @@
                 <td><input class="seperate2" type="button" value="7" onclick="appendValue('7')"></td>
                 <td><input class="seperate2" type="button" value="8" onclick="appendValue('8')"></td>
                 <td><input class="seperate2" type="button" value="9" onclick="appendValue('9')"></td>
-                <td><input class="seperate" type="button" value="*" onclick="appendValue('*')"></td>
+                <td><input class="seperate" id="multi" type="button" value="*" onclick="appendValue('*')"></td>
             </tr>
             <tr>
                 <td><input class="seperate2" type="button" value="4" onclick="appendValue('4')"></td>
                 <td><input class="seperate2" type="button" value="5" onclick="appendValue('5')"></td>
                 <td><input class="seperate2" type="button" value="6" onclick="appendValue('6')"></td>
-                <td><input class="seperate" type="button" value="/" onclick="appendValue('/')"></td>
+                <td><input class="seperate" id="div" type="button" value="/" onclick="appendValue('/')"></td>
             </tr>
             <tr>
                 <td><input class="seperate2" type="button" value="1" onclick="appendValue('1')"></td>
                 <td><input class="seperate2" type="button" value="2" onclick="appendValue('2')"></td>
                 <td><input class="seperate2" type="button" value="3" onclick="appendValue('3')"></td>
-                <td><input class="seperate" type="button" value="+" onclick="appendValue('+')"></td>
+                <td><input class="seperate" id="plus" type="button" value="+" onclick="appendValue('+')"></td>
             </tr>
             <tr>
                 <td><input class="seperate2" type="button" value="0" onclick="appendValue('0')"></td>
                 <td><input class="seperate2" type="button" value="(" onclick="appendValue('(')"></td>
                 <td><input class="seperate2" type="button" value=")" onclick="appendValue(')')"></td>
-                <td><input class="seperate" type="button" value="-" onclick="appendValue('-')"></td>
+                <td><input class="seperate" id="sub" type="button" value="-" onclick="appendValue('-')"></td>
             </tr>
             <tr>
                 <td><input class="seperate1" type="button" value="=" onclick="display.value= eval (display.value)"></td>
